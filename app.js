@@ -13,9 +13,10 @@ var shoppingList = {
 
 // State modification functions
 // I am pushing an item into the shoppingList.
-document.getElementById("shopping-list-entry").onClick = function(event) {
+document.getElementById("shopping-list-item").onClick = function(event) {
     var addItem = function(shoppingList, item) {
         shoppingList.items.push(item);
+        return item.submit();
     };
 }
 
@@ -36,4 +37,10 @@ $('.shopping-list-add').submit(function(event) {
     addItem(shoppingList, $('.shopping-list-add-input').val());
     renderList(shoppingList, $('.shopping-list'));
 });
+
+// Event listener to remove shopping list item?
+$('.shopping-item-delete').click(function(event) {
+    this.remove();
+});
+
 
