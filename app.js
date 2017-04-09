@@ -31,7 +31,7 @@ var renderList = function(shoppingList, element) {
     element.html(itemsHTML);
 };
 
-// Event listeners
+// Event listener to add item?
 $('.shopping-list-add').submit(function(event) {
     event.preventDefault();
     addItem(shoppingList, $('.shopping-list-add-input').val());
