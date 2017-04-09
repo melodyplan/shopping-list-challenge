@@ -7,14 +7,33 @@
 console.log("hi");
 //test to check if connected with index.html
 
-var state = {
+var shoppingList = {
     items: []
 };
 
 // State modification functions
+// I am pushing an item into the shoppingList.
 document.getElementById("shopping-list-entry").onClick = function(event) {
-    var addItem = function(state, item) {
-        state.items.push(item);
+    var addItem = function(shoppingList, item) {
+        shoppingList.items.push(item);
     };
 }
+
+//let's modify from the last exercise mebbe with the separated shopping list?:
+
+// Render functions
+// I don't really understand this bit?
+var renderList = function(shoppingList, element) {
+    var itemsHTML = shoppingList.items.map(function(item) {
+        return '<li>' + item + '</li>';
+    });
+    element.html(itemsHTML);
+};
+
+// Event listeners
+$('.shopping-list-add').submit(function(event) {
+    event.preventDefault();
+    addItem(shoppingList, $('.shopping-list-add-input').val());
+    renderList(shoppingList, $('.shopping-list'));
+});
 
