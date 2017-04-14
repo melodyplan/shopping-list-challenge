@@ -41,11 +41,15 @@ var renderHtml = function(shoppingList) {
 }
 
 //need to slashout an item using strike()?
-$('shopping-item-controls').on('check', function(event) {
-    var checkItem = $('shopping-item-toggle').strike();
-    var deleteItem = $('shopping-item-delete').toggle(function(item) {
-      delete item;
-    })
+$('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
+    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked')
+})
+
+$('.shopping-list').on('click', '.shopping-item-delete', function(event) {
+  var itemName = $(this).closest('li').find('.shopping-item').text();
+  var index = shoppingList.items.indexOf(itemName);
+  shoppingList.items.splice(index, 1);
+  renderHtml(shoppingList);
 })
 //var checkItem = shoppingList.items.
 
